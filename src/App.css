@@ -13,6 +13,10 @@
 
 
  /*Shared classes*/
+a{
+  color:black;
+  text-decoration: none;
+}
 
  .btn{
    width:200px;
@@ -53,7 +57,7 @@
    align-items: center;
    padding:50px;
  }
- section#home nav{
+  nav{
    position: fixed;
    top:0;
    left:0;
@@ -69,26 +73,25 @@
    box-shadow: 0px 30px 30px #F2F0D5;
  }
 
- section#home nav h3{
+nav h3{
   font-style: normal;
   font-weight: 500;
   font-size: 25px;
   line-height: 45px;
   letter-spacing: 0.06em;
  }
-
- section#home nav ul{
+nav ul{
    display: flex;
    justify-content: space-between;
    align-items: center;
    list-style: none;
  }
- section#home nav ul li{
+nav ul li{
    margin-left:30px;
    cursor: pointer;
  }
  
- section#home nav ul li:active{
+ nav ul li:active{
    color:#668C4A;
    font-weight: 550;
  }

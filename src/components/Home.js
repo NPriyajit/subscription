@@ -1,9 +1,11 @@
 import logo from '../img/yoga.svg';
 import Nav from './Nav'
+import Plan from './Plan';
 import '../App.css';
 
 function Home(){
     return (
+       <div>
         <section id="home">
         <Nav/>
         <div className="left">
@@ -11,7 +13,9 @@ function Home(){
            <a href="#plans" className="btn subscribe" >Subscribe Now!</a>
         </div>
         <img src={logo} alt="yoga picture" className="yoga"/>
-     </section>
+      </section>
+      <Plan/>
+      </div>
       );
 }
 

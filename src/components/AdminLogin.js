@@ -1,9 +1,10 @@
 import '../App.css';
-
+import Nav from './Nav';
 
 function AdminLogin(){
     return(
         <section id="login">
+            <Nav/>
             <div className="login-container adminlogin">
                 <h2>Admin Login</h2>
                 <div className="inputfields">
