@@ -5,6 +5,11 @@ import { useState } from 'react';
 
 
 function AdminLogin(){
+    let adminId= sessionStorage.getItem('admin-id');
+    if(adminId){
+        window.location.href="/adminhome"
+    }
+
     const [admin, setAdmin] = useState({ email: "", password: "" });
 
     function changeStateValue(e) {
@@ -31,7 +36,7 @@ function AdminLogin(){
                 <div className="inputfields">
                     <div className="inputfield">
                         <label>Admin Name:</label>
-                        <input type="text" placeholder="Enter the Email..." name="adminName" value={admin.email} onChange={changeStateValue}/>
+                        <input type="text" placeholder="Enter the Email..." name="email" value={admin.email} onChange={changeStateValue}/>
                     </div>
                     <div className="inputfield">
                         <label>Password:</label>
@@ -42,6 +47,9 @@ function AdminLogin(){
                        <button type="button" className="btn reset">Reset</button>
                        <button type="button" onClick={getLoggin} className="btn subscribe">Submit</button>
                 </div>
+                <a className='register' href='/adminregister'>
+                New Admin?
+                </a>
             </div>
         </section>
     );

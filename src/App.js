@@ -7,6 +7,8 @@ import AdminHome from "./components/AdminHome";
 import MyAccount from "./components/MyAccount";
 import Register from "./components/Register";
 import axios from "axios";
+import Subscribe from "./components/Subscribe";
+import AdminRegister from "./components/AdminRegister";
 
 
 export const userApi = axios.create({
@@ -28,6 +30,8 @@ function App() {
           <Route path='/myaccount' component={MyAccount} />
           <Route path='/register' component={Register} />
           <Route path='/adminhome' component={AdminHome} />
+          <Route path='/learnmore' component={Subscribe} />
+          <Route path='/adminregister' component={AdminRegister} />
         </Switch>
       </div>
     </Router>

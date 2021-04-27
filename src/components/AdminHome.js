@@ -5,9 +5,11 @@ import "../App.css";
 import Subscriptions from "../models/Subscriptions";
 import { adminApi } from "../App";
 import { useEffect, useState } from "react";
+import AllUserDetails from "./AllUserDetails";
 
 function AdminHome() {
   const [sub, setSub] = useState({name:"",dateOfEnd:""});
+  const [subscriptions,setSubs]=useState([]);
 
   function changeSubscriptions(e) {
     setSub({ ...sub, [e.target.name]: e.target.value });
@@ -21,19 +23,42 @@ function AdminHome() {
 
   useEffect(()=>{
   async function showAllData() {
-    adminApi
-      .get("/getAllSubscriptions")
-      .then((res) => window.location.href="/adminhome")
-      .catch((err) => alert(err));
+    let req=await adminApi.get("/getAllSubscriptions");
+      setSubs(req.data)
   }
   showAllData();
-});
+},[]);
 
+
+
+async function deletePlan(id){
+    let item=await adminApi.delete('/deleteSubscription/'+id);
+    console.log(item)
+    alert("deleted succsessfully")
+    window.location.href="/adminhome"
+}
+
+const cards = subscriptions.map((item, index) => {
+    return (
+       <div className="card" id={index}>
+       <h1>{item.name}</h1>
+       <p>Date of End: {item.dateOfEnd}</p>
+       <button class="deleteplan" onClick={() =>  deletePlan(item._id)}>Delete</button>
+   </div>
+    );
+  });
+
+  function logout(){
+    sessionStorage.removeItem('admin-id')
+    window.location.href="/adminlogin"
+  }
 
   return (
+      <div>
     <section id='login' className='adminhome'>
       <Nav />
       <h1 className="title">Admin Pannel</h1>
+      <button type="button" className="deleteplan logout" onClick={logout}>Logout Admin</button>
       <div className='adminhomepage'>
         <div className='login-container'>
           <h2>Add Plans</h2>
@@ -68,15 +93,13 @@ function AdminHome() {
           </div>
         </div>
         <div className='subscriptions'>
-            <div className="card">
-                <h1>Name</h1>
-                <p>Date of End: 12/34/34</p>
-            </div>
-            
+           {cards} 
         
         </div>
       </div>
     </section>
+    <AllUserDetails/>
+    </div>
   );
 }
 

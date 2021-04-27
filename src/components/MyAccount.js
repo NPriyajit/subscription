@@ -2,39 +2,19 @@ import "../App.css";
 import Nav from "./Nav";
 import { userApi } from "../App";
 import User from "../models/User";
-
-
-
-import { globalContext, GlobalProvider } from "../services/store";
 import { useContext, useEffect, useState } from "react";
-import Subscriptions from "../models/Subscriptions";
+import { dateDiff } from "../services/utils";
 
-const accountDetails = {
-  userName: "N Priyajit",
-  dob: "13/05/1999",
-  doj: "12/11/2010",
-  subscribed: [
-    {
-      name: "something",
-      daysLeft: "5days",
-      status: "subscribed",
-    },
 
-    {
-      name: "what",
-      daysLeft: "9days",
-      status: "subscribed",
-    },
-    {
-      name: "anything",
-      daysLeft: "10days",
-      status: "unsubscribed",
-    },
-  ],
-};
+
 
 function MyAccount() {
   const id = sessionStorage.getItem("id");
+
+  if(id==null || id==""){
+  
+    window.location.href="/login"
+  }
   
   let [user, setUser] = useState(User);
  
@@ -49,12 +29,12 @@ function MyAccount() {
   },[])
   
   
+const {name,email,dob,subscriptions}=user;
 
-  const {name,email,dob,subscriptions}=user;
+let cards =<h1>No Subscriptions found!</h1>
 
 
-
-  const cards = subscriptions.map((item, index) => {
+ cards = subscriptions.map((item, index) => {
     return (
       <div
         className={
@@ -63,7 +43,7 @@ function MyAccount() {
         }
         id={index}>
         <h4>{item.name}</h4>
-        <h5>Days Left: {item.daysLeft}</h5>
+        <h5>Days Left: {dateDiff(item.dateOfSubscription,item.dateOfEnd)}</h5>
         <h6
           style={{
             color: item.status.includes("unsubscribed") ? "#ccc" : "red",
@@ -74,22 +54,26 @@ function MyAccount() {
     );
   });
 
- 
+  function logout(){
+    sessionStorage.removeItem('id')
+    window.location.href="/login"
+  }
+
 
   return (
     <section id='myaccount'>
       <Nav />
       <h2>My Account</h2>
+      <button type="button" className="deleteplan logout" onClick={logout}>Logout User</button>
       <div className='myaccountdetails'>
         <div className='subscriptions'>{cards}</div>
         <div className='account-details'>
-          <div className='name-icon'>N</div>
+          <div className='name-icon'>{name.substr(0,1).toUpperCase()}</div>
           <div className='details'>
-          <li>Name: {name}</li>
+          <li>Name: {name.toUpperCase()}</li>
             <li>Date Of Birth: {dob}</li>
             <li>Email Id: {email}</li>
-            <li>Date of Join: {accountDetails.doj}</li>
-            <li>Total subscriptions: {accountDetails.subscribed.length}</li>
+            <li>Total subscriptions: {subscriptions.length}</li>
           </div>
         </div>
       </div>
