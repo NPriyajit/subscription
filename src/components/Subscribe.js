@@ -48,7 +48,7 @@ function Subscribe(){
  },[check])
     
 
-                
+      //Subscription is null?          
   
 
     if(sub!=null)

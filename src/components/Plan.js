@@ -27,6 +27,8 @@ function Plan() {
     }
   }
 
+  //Cards value assigning
+
   const cards = subscriptions.map((item, index) => {
     return (
       <div id={index} className='plancard'>
