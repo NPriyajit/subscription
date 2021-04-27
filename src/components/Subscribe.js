@@ -35,6 +35,7 @@ function Subscribe(){
                 name:sub.name,
                 dateOfEnd:sub.dateOfEnd,
                 status:'subscribed',
+                desc:sub.desc,
                 dateOfSubscription:new Date().toLocaleDateString('en-GB')
             }
             );
@@ -56,10 +57,11 @@ function Subscribe(){
         <section id="home" class="subscribers">
           
             <Nav/>
-            <h1>Subscribe</h1>
+            <h1>Plan Detail</h1>
             <div class="centered">
             
             <h3>{sub.name}</h3>
+            <p>{sub.desc}</p>
             <p>Date of End: {sub.dateOfEnd}</p>
             <button class="btn subscribe" onClick={()=>setCheck(true)}>Subscribe</button>
             </div>

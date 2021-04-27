@@ -33,7 +33,7 @@ const {name,email,dob,subscriptions}=user;
 
 let cards =<h1>No Subscriptions found!</h1>
 
-
+if(subscriptions.length!=0){
  cards = subscriptions.map((item, index) => {
     return (
       <div
@@ -43,7 +43,8 @@ let cards =<h1>No Subscriptions found!</h1>
         }
         id={index}>
         <h4>{item.name}</h4>
-        <h5>Days Left: {dateDiff(item.dateOfSubscription,item.dateOfEnd)}</h5>
+        <h5>Subscribe Date:  {item.dateOfSubscription}</h5>
+        <h5>End of Subscription : {item.dateOfEnd}</h5>
         <h6
           style={{
             color: item.status.includes("unsubscribed") ? "#ccc" : "red",
@@ -53,7 +54,7 @@ let cards =<h1>No Subscriptions found!</h1>
       </div>
     );
   });
-
+}
   function logout(){
     sessionStorage.removeItem('id')
     window.location.href="/login"

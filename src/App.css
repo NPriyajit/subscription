@@ -398,7 +398,7 @@ section#login.adminhome h1.title {
   margin-top: 60px;
 }
 section#login.adminhome .login-container{
-  height:370px
+  height:420px
 }
 
 .subscriptions{
@@ -530,17 +530,27 @@ section#home.subscribers{
   
 
 }
+
+
 .centered{
   height:80%;
-  width:300px;
+  width:450px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding:40px 50px;
   border-radius: 5px;
-
+  border:3px solid black;
   flex-direction: column;
   background-color: #f2c53d9e;
+}
+
+.subscribers h1{
+  font-size: 50px;
+
+}
+.centered h3{
+  font-size: 40px;
 }
 section#home.subscribers > *{
   margin-top: 20px;

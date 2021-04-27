@@ -16,6 +16,12 @@ function AdminRegister() {
       .then((res) => window.location.href="/adminlogin")
       .catch((err) => alert(err));
   }
+
+  function reset(){
+    setUser(Admin
+    )
+  }
+
   return (
     <section id='register'>
       <Nav />
@@ -36,7 +42,7 @@ function AdminRegister() {
           </div>
         </div>
         <div className='buttons'>
-          <button type='button'  className='btn reset'>
+          <button type='button' onClick={reset}  className='btn reset'>
             Reset
           </button>
           <button type='button' onClick={register} className='btn subscribe'>

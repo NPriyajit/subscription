@@ -16,6 +16,16 @@ function Register() {
       .then((res) => window.location.href="/login")
       .catch((err) => alert(err));
   }
+
+  
+
+
+  function reset(){
+    setUser(User
+    )
+  }
+
+
   return (
     <section id='register'>
       <Nav />
@@ -32,7 +42,7 @@ function Register() {
           </div>
           <div className='inputfield'>
             <label>Date Of Birth:</label>
-            <input type='text' placeholder='Enter the Dob...'  name="dob" value={user.dob} onChange={changeUser}  />
+            <input type='date' placeholder='Enter the Dob...'  name="dob" value={user.dob} onChange={changeUser}  />
           </div>
           <div className='inputfield'>
             <label>Password:</label>
@@ -40,10 +50,10 @@ function Register() {
           </div>
         </div>
         <div className='buttons'>
-          <button type='button'  className='btn reset'>
+          <button type='button' onClick={reset} className='btn reset'>
             Reset
           </button>
-          <button type='button' onClick={register} className='btn subscribe'>
+          <button type='button' onClick={register}className='btn subscribe'>
             Submit
           </button>
         </div>

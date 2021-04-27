@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import AllUserDetails from "./AllUserDetails";
 
 function AdminHome() {
-  const [sub, setSub] = useState({name:"",dateOfEnd:""});
+  const [sub, setSub] = useState({name:"",desc:"",dateOfEnd:""});
   const [subscriptions,setSubs]=useState([]);
 
   function changeSubscriptions(e) {
@@ -29,7 +29,9 @@ function AdminHome() {
   showAllData();
 },[]);
 
-
+function reset(){
+  setSub({name:"",desc:"",dateOfEnd:""});
+}
 
 async function deletePlan(id){
     let item=await adminApi.delete('/deleteSubscription/'+id);
@@ -74,6 +76,16 @@ const cards = subscriptions.map((item, index) => {
               />
             </div>
             <div className='inputfield'>
+              <label>Plan Desc:</label>
+              <input
+                type='text'
+                placeholder='Enter the Plan Description...'
+                name='desc'
+                value={sub.desc}
+                onChange={changeSubscriptions}
+              />
+            </div>
+            <div className='inputfield'>
               <label>Date of End:</label>
               <input
                 type='date'
@@ -84,7 +96,7 @@ const cards = subscriptions.map((item, index) => {
             </div>
           </div>
           <div className='buttons'>
-            <button type='button' className='btn reset'>
+            <button type='button' onClick={reset} className='btn reset'>
               Reset
             </button>
             <button onClick={saveSub} type='button' className='btn subscribe'>

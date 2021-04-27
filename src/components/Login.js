@@ -25,6 +25,10 @@ function Login() {
    window.location.href="/myaccount"
   }
 
+  function reset(){
+    setUser({ email: "", password: "" })
+  }
+
 
 
   return (
@@ -41,6 +45,7 @@ function Login() {
               name='email'
               value={user.email}
               onChange={changeStateValue}
+              required={true}
             />
           </div>
           <div className='inputfield'>
@@ -51,11 +56,12 @@ function Login() {
               name='password'
               value={user.password}
               onChange={changeStateValue}
+              required={true}
             />
           </div>
         </div>
         <div className='buttons'>
-          <button type='button' className='btn reset'>
+          <button type='button' onClick={reset} className='btn reset'>
             Reset
           </button>
           <button onClick={showValue} type='button' className='btn subscribe'>

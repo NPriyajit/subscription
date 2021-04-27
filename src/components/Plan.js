@@ -5,15 +5,6 @@ import {adminApi, userApi} from '../App'
 import User from "../models/User";
 import Subscribe from "./Subscribe";
 
-const plans =
-  {
-    id: 14,
-    name: "Platinum",
-    period: "40",
-    desc:
-      "Lorem ipsumm has been the industry's standard dummy text ever since the 1500sas been the industry's standard",
-    price: "400",
-  };
 
 function Plan() {
   const [subscriptions,setSubs]=useState([]);
@@ -41,7 +32,7 @@ function Plan() {
       <div id={index} className='plancard'>
         <h3>{item.name}</h3>
         <h5>Time period: {dateDiff(new Date().toLocaleDateString('en-GB'), item.dateOfEnd)}days</h5>
-        <p>{plans.desc}</p>
+        <p>{item.desc.substring(0, 100)}</p>
         <div class='buttons'>
         
           <button type='button' onClick={()=>learnMore(item._id)} className='btn learn'>

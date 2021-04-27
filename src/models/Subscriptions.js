@@ -3,7 +3,7 @@ const Subscriptions={
         status: "",
         dateOfEnd:"",
         dateOfSubscription:"",
-        daysLeft:""
+        desc:""
 }
 
 export default Subscriptions;
